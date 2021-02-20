@@ -1,3 +1,4 @@
+namespace: simple-app-prd
 serviceAccounts:
 - name: svc-prd-a
 - name: svc-prd-b

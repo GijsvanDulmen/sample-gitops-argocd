@@ -1,3 +1,4 @@
+namespace: simple-app-dev
 serviceAccounts:
 - name: svc-a
 - name: svc-b
