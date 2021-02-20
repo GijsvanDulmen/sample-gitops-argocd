@@ -31,5 +31,6 @@ kubectl apply -f -
 kubectl wait --for=condition=available --timeout=600s deployment/argocd-server -n argocd
 
 # apply applications
+kubectl -n argocd apply -f ../applications
 
 Open "http://argocd.${HOSTIP}.nip.io"
