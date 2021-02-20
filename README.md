@@ -1,3 +1,3 @@
 ## ArgoCD GitOps
 
-Add more text later and more and more some more
+Add more text later and more and more
