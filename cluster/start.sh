@@ -17,7 +17,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl -n argocd patch secret argocd-secret \
   -p '{"stringData": {
     "admin.password": "$2a$10$k.6AIfusiYu8z3BMKYcfLuolH/IeiHESZxCjC68TbPk254gYodAgm",
-    "admin.passwordMtime": "'$(date +%FT%T%Z)'"
+    "admin.passwordMtime": "'$(date +%FT%T%Z)'",
+    "webhook.github.secret": "totalsecret"
   }}'
 
 export HOSTIP=`minikube -p ${CLUSTER} ip`
