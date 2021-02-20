@@ -1,17 +1,41 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sample-app
+  name: simple-app-production
   namespace: argocd
 spec:
   destination:
-    namespace: simple-app
+    namespace: simple-app-prd
     server: https://kubernetes.default.svc
   project: default
   source:
     path: resources/simple-app
     repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
     targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values-production.yaml
+  syncPolicy:
+    automated:
+      prune: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-app-development
+  namespace: argocd
+spec:
+  destination:
+    namespace: simple-app-dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: resources/simple-app
+    repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values-development.yaml
   syncPolicy:
     automated:
       prune: false
