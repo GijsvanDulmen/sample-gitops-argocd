@@ -6,6 +6,30 @@ metadata:
     name: {{ $app.namespace | quote }}
 ---
 apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: "project-{{ $app.name }}"
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Simple App project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: {{ $app.namespace | quote }}
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  # none!
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+---
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $app.name | quote }}
@@ -13,6 +37,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  project: "project-{{ $app.name }}"
   destination:
     namespace: {{ $app.namespace | quote }}
     server: https://kubernetes.default.svc
