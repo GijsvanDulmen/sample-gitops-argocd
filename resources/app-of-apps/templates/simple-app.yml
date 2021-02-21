@@ -43,7 +43,6 @@ spec:
   destination:
     namespace: {{ $app.namespace | quote }}
     server: {{ $app.server | quote }}
-  project: default
   source:
     path: resources/simple-app
     repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
