@@ -1,3 +1,4 @@
+{{- $root := . -}}
 {{- range $app := .Values.simpleApp }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,8 +17,8 @@ spec:
     repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
     targetRevision: HEAD
     helm:
-      valueFiles:
-      - {{ $app.values | quote }}
+      values: |
+        url: "{{ $app.name }}.{{ $root.Values.url }}"
   syncPolicy:
     {{ if eq $app.production "yes" }}
     automated: {}
