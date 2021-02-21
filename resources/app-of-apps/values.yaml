@@ -3,9 +3,12 @@ simpleApp:
 - name: simple-app-prd
   namespace: simple-app-prd
   production: "yes"
+  server: https://kubernetes.default.svc
 - name: simple-app-dev
   namespace: simple-app-dev
   production: "no"
+  server: https://kubernetes.default.svc
 # - name: simple-app-feature
 #   namespace: simple-app-feature
 #   production: "no"
+#   server: https://kubernetes.default.svc

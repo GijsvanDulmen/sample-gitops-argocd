@@ -17,7 +17,7 @@ metadata:
 spec:
   destination:
     namespace: {{ $app.namespace | quote }}
-    server: https://kubernetes.default.svc
+    server: {{ $app.server | quote }}
   project: default
   source:
     path: resources/simple-app
