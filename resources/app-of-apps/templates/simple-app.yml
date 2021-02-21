@@ -18,8 +18,10 @@ spec:
   - '*'
   destinations:
   - namespace: {{ $app.namespace | quote }}
-    server: https://kubernetes.default.svc
-  clusterResourceWhitelist: []
+    server: {{ $app.server | quote }}
+  clusterResourceBlacklist:
+  - group: '*'
+    kind: '*'
   # none!
   namespaceResourceBlacklist:
   - group: ''
