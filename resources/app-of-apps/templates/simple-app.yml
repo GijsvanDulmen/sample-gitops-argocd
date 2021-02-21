@@ -52,6 +52,7 @@ spec:
     helm:
       values: |
         url: "{{ $app.name }}.{{ $root.Values.url }}"
+        createNamespace: "{{ $app.createNamespace }}"
   syncPolicy:
     {{ if eq $app.production "yes" }}
     automated: {}
