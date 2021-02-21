@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: configure-api-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: configure-some-api-job
+        image: gijsvandulmen/echoserver:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "101Mi"
+          limits:
+            cpu: "100m"
+            memory: "120Mi"
+        command:
+          - "sh"
+          - "-c"
+          - "echo \"do in parallel!\" && sleep 6;"
