@@ -60,5 +60,7 @@ spec:
       prune: true
       selfHeal: true
     {{ end }}
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
 ---
 {{ end }}
