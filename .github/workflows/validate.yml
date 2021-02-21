@@ -1,0 +1,17 @@
+name: Helm validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  helm-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: helm-check
+      uses: igabaydulin/helm-check-action@0.1.4
+      env:
+        CHART_LOCATION: ./resources/simple-app
+        CHART_VALUES: ./resources/simple-app/values.yaml
