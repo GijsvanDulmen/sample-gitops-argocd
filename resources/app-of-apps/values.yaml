@@ -1,0 +1,9 @@
+simpleApp:
+- name: simple-app-prd
+  values: values-production.yaml
+  namespace: simple-app-prd
+  production: "yes"
+- name: simple-app-dev
+  values: values-development.yaml
+  namespace: simple-app-dev
+  production: "no"
