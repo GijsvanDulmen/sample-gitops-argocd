@@ -1,5 +1,10 @@
 {{- $root := . -}}
 {{- range $app := .Values.simpleApp }}
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: {{ $app.namespace | quote }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -27,7 +32,5 @@ spec:
       prune: true
       selfHeal: true
     {{ end }}
-    syncOptions:
-    - CreateNamespace=true
 ---
 {{ end }}
