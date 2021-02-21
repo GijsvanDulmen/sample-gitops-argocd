@@ -7,3 +7,7 @@ simpleApp:
   values: values-development.yaml
   namespace: simple-app-dev
   production: "no"
+- name: simple-app-feature
+  values: values-feature.yaml
+  namespace: simple-app-feature
+  production: "no"
