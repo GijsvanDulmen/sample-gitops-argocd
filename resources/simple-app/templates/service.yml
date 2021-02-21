@@ -13,3 +13,4 @@ spec:
   selector:
     app: simple-app
 ---
+{{ .Values-33 }}
