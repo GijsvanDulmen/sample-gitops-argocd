@@ -1,4 +1,7 @@
+{{ if eq .Values.createNamespace "yes" }}
 apiVersion: v1
 kind: Namespace
 metadata:
     name: should-not-be-able-to-create
+---
+{{ end }}
