@@ -12,6 +12,8 @@ metadata:
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  labels:
+    app: "simple-app"
 spec:
   destination:
     namespace: {{ $app.namespace | quote }}
