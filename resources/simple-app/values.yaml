@@ -1,3 +1,5 @@
 # no values for this app!
 url: test123456789
 createNamespace: "yes"
+image: gijsvandulmen/echoserver:latest
+version: 1

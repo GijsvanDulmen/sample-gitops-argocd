@@ -16,11 +16,13 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: gijsvandulmen/echoserver:latest
+        image: {{ .Values.images | quote }}
         imagePullPolicy: Always
         env:
           - name: SHOW_HEADERS
             value: "false"
+          - name: APP_VERSION
+            value: {{ .Values.version | quote }}
         resources:
           requests:
             cpu: "10m"
