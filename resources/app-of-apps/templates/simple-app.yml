@@ -18,8 +18,7 @@ spec:
       - {{ $app.values | quote }}
   syncPolicy:
     {{ if eq $app.production "yes" }}
-    automated:
-      prune: false
+    automated: {}
     {{ else }}
     automated:
       prune: true
