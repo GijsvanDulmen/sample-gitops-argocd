@@ -1,4 +1,1 @@
-serviceAccounts:
-- name: svc-dev-a
-- name: svc-dev-b
-- name: svc-dev-c
+url: simple-app-dev.192.168.64.26.nip.io
