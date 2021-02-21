@@ -1,21 +1,24 @@
-url: 192.168.64.26.nip.io
 simpleApp:
 - name: simple-app-prd
   namespace: simple-app-prd
   production: "yes"
   server: https://kubernetes.default.svc
   createNamespace: "no"
+  values: values-prd.yaml
 - name: simple-app-dev
   namespace: simple-app-dev
   production: "no"
   server: https://kubernetes.default.svc
   createNamespace: "no"
+  values: values-dev.yaml
 # - name: simple-app-feature
 #   namespace: simple-app-feature
 #   production: "no"
 #   server: https://kubernetes.default.svc
+#   values: values-dev.yaml
 # - name: simple-app-cluster-resourcs
 #   namespace: simple-app-crs
 #   production: "no"
 #   server: https://kubernetes.default.svc
 #   createNamespace: "yes"
+#   values: values-dev.yaml

@@ -50,9 +50,8 @@ spec:
     repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
     targetRevision: HEAD
     helm:
-      values: |
-        url: "{{ $app.name }}.{{ $root.Values.url }}"
-        createNamespace: "{{ $app.createNamespace }}"
+      valueFiles:
+      - {{ $app.values }}
   syncPolicy:
     {{ if eq $app.production "yes" }}
     automated: {}

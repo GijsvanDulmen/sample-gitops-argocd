@@ -14,4 +14,4 @@ jobs:
       uses: igabaydulin/helm-check-action@0.1.4
       env:
         CHART_LOCATION: ./resources/simple-app
-        CHART_VALUES: ./resources/simple-app/values.yaml
+        CHART_VALUES: ./resources/simple-app/values-test.yaml
