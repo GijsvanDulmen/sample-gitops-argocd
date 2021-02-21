@@ -7,7 +7,5 @@ simpleApp:
   namespace: simple-app-dev
   production: "no"
 # - name: simple-app-feature
-#   values: values-feature.yaml
 #   namespace: simple-app-feature
 #   production: "no"
-#   url: simple-app-feature.192.168.64.26.nip.io
