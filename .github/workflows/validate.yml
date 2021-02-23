@@ -9,6 +9,12 @@ on:
 jobs:
   helm-check:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: resources/simple-app
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -28,16 +34,13 @@ jobs:
     - name: Run chart-testing (list-changed)
       id: list-changed
       run: |
-        cd ./resources/simple-app
         changed=$(ct list-changed)
         if [[ -n "$changed" ]]; then
           echo "::set-output name=changed::true"
         fi
 
     - name: Run chart-testing (lint)
-      run: |
-        cd ./resources/simple-app
-        ct lint
+      run: ct lint
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
@@ -45,9 +48,7 @@ jobs:
       if: steps.list-changed.outputs.changed == 'true'
 
     - name: Run chart-testing (install)
-      run: |
-        cd ./resources/simple-app
-        ct install
+      run: ct install
 
     # - name: helm-check
     #   uses: igabaydulin/helm-check-action@0.1.4
