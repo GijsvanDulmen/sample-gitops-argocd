@@ -52,7 +52,7 @@ jobs:
       run: ls -ltr
 
     - name: Run chart-testing (lint)
-      run: ct lint --target-branch=main --chart-dirs=.
+      run: ct lint --chart-dirs=.
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
@@ -60,7 +60,7 @@ jobs:
       if: steps.list-changed.outputs.changed == 'true'
 
     - name: Run chart-testing (install)
-      run: ct install --target-branch=main --chart-dirs=.
+      run: ct install --chart-dirs=.
 
     # - name: helm-check
     #   uses: igabaydulin/helm-check-action@0.1.4
