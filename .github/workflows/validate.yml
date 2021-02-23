@@ -55,7 +55,8 @@ jobs:
       run: ls -ltr
 
     - name: Run chart-testing (lint)
-      run: ct lint --target-branch=main --chart-dirs=.
+      # run: ct lint --target-branch=main --chart-dirs=.
+      run: ct lint --remote origin --target-branch main --chart-dirs resources/simple-app
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
