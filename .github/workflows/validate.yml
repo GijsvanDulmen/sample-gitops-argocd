@@ -44,7 +44,7 @@ jobs:
       run: ls -ltr
 
     - name: Run chart-testing (lint)
-      run: ct lint --all --chart-dirs resources/simple-app
+      run: ct lint --debug --all --chart-dirs resources/simple-app
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
