@@ -3,3 +3,6 @@ appVersion: "1.0"
 description: Simple App
 name: simple-app
 version: 0.1.0
+maintainers:
+  - name: GijsvanDulmen
+    url: https://www.gijsvandulmen.dev/
