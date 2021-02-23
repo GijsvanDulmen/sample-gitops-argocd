@@ -15,6 +15,9 @@ jobs:
         shell: bash
         working-directory: resources/simple-app
 
+    # ct commands needs --target-branch=main
+    # see: https://github.com/helm/chart-testing-action/issues/25
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -31,13 +34,13 @@ jobs:
     - name: Set up chart-testing
       uses: helm/chart-testing-action@v2.0.1
 
-    - name: Run chart-testing (list-changed)
-      id: list-changed
-      run: |
-        changed=$(ct list-changed --target-branch=main)
-        if [[ -n "$changed" ]]; then
-          echo "::set-output name=changed::true"
-        fi
+    # - name: Run chart-testing (list-changed)
+    #   id: list-changed
+    #   run: |
+    #     changed=$(ct list-changed --target-branch=main)
+    #     if [[ -n "$changed" ]]; then
+    #       echo "::set-output name=changed::true"
+    #     fi
 
     - name: Run chart-testing (lint)
       run: ct lint --target-branch=main
