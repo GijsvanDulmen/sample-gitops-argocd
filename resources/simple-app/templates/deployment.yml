@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: {  .Values.image | quote }}
+        image: {{ .Values.image | quote }}
         imagePullPolicy: Always
         env:
           - name: SHOW_HEADERS
