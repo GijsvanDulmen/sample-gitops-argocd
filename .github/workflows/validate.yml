@@ -45,6 +45,12 @@ jobs:
     #       echo "::set-output name=changed::true"
     #     fi
 
+    - name: List current dir
+      run: pwd
+
+    - name: List current dir s
+      run: ls -ltr
+
     - name: Run chart-testing (lint)
       run: ct lint --target-branch=main --chart-dirs=.
 
