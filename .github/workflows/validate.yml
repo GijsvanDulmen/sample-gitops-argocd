@@ -25,6 +25,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
+        # see: https://github.com/helm/chart-testing/issues/186
         fetch-depth: "0"
 
     - name: Set up Helm
@@ -54,7 +55,7 @@ jobs:
       run: ls -ltr
 
     - name: Run chart-testing (lint)
-      run: ct lint --chart-dirs=.
+      run: ct lint --target-branch=main --chart-dirs=.
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
