@@ -10,17 +10,6 @@ jobs:
   helm-check:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
-        working-directory: resources/simple-app
-
-    env:
-      working-directory: resources/simple-app
-
-    # ct commands needs --target-branch=main
-    # see: https://github.com/helm/chart-testing-action/issues/25
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -40,13 +29,13 @@ jobs:
     - name: Set up chart-testing
       uses: helm/chart-testing-action@v2.0.1
 
-    # - name: Run chart-testing (list-changed)
-    #   id: list-changed
-    #   run: |
-    #     changed=$(ct list-changed --target-branch=main)
-    #     if [[ -n "$changed" ]]; then
-    #       echo "::set-output name=changed::true"
-    #     fi
+    - name: Run chart-testing (list-changed)
+      id: list-changed
+      run: |
+        changed=$(ct list-changed --remote origin --target-branch main --chart-dirs resources/simple-app)
+        if [[ -n "$changed" ]]; then
+          echo "::set-output name=changed::true"
+        fi
 
     - name: List current dir
       run: pwd
@@ -55,8 +44,7 @@ jobs:
       run: ls -ltr
 
     - name: Run chart-testing (lint)
-      # run: ct lint --target-branch=main --chart-dirs=.
-      run: ct lint --remote origin --target-branch main --chart-dirs resources/simple-app
+      run: ct lint --all --chart-dirs resources/simple-app
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
@@ -64,10 +52,4 @@ jobs:
       if: steps.list-changed.outputs.changed == 'true'
 
     - name: Run chart-testing (install)
-      run: ct install --chart-dirs=.
-
-    # - name: helm-check
-    #   uses: igabaydulin/helm-check-action@0.1.4
-    #   env:
-    #     CHART_LOCATION: ./resources/simple-app
-    # CHART_VALUES: ./resources/simple-app/values-test.yaml
+      run: ct install --all --chart-dirs resources/simple-app
