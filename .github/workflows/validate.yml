@@ -15,6 +15,9 @@ jobs:
         shell: bash
         working-directory: resources/simple-app
 
+    env:
+      working-directory: resources/simple-app
+
     # ct commands needs --target-branch=main
     # see: https://github.com/helm/chart-testing-action/issues/25
 
