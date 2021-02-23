@@ -34,13 +34,13 @@ jobs:
     - name: Run chart-testing (list-changed)
       id: list-changed
       run: |
-        changed=$(ct list-changed)
+        changed=$(ct list-changed --target-branch=main)
         if [[ -n "$changed" ]]; then
           echo "::set-output name=changed::true"
         fi
 
     - name: Run chart-testing (lint)
-      run: ct lint
+      run: ct lint --target-branch=main
 
     # heavy stuff - please disable :-)
     - name: Create kind cluster
@@ -48,7 +48,7 @@ jobs:
       if: steps.list-changed.outputs.changed == 'true'
 
     - name: Run chart-testing (install)
-      run: ct install
+      run: ct install --target-branch=main
 
     # - name: helm-check
     #   uses: igabaydulin/helm-check-action@0.1.4
