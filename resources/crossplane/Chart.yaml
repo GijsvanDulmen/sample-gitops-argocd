@@ -1,0 +1,8 @@
+apiVersion: v2
+appVersion: "1.0"
+description: Crossplane demo
+name: crossplane-demo
+version: 0.1.0
+maintainers:
+  - name: GijsvanDulmen
+    url: https://www.gijsvandulmen.dev/

@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+  namespace: argocd
+spec:
+  destination:
+    namespace: crossplane-demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: resources/crossplane
+    repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - ApplyOutOfSyncOnly=true

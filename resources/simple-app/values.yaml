@@ -1,4 +1,3 @@
-# no values for this app!
 url: test123456789
 createNamespace: "no"
 image: gijsvandulmen/echoserver:latest
