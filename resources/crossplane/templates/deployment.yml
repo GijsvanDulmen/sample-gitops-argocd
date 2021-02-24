@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crossplane-demo
+  labels:
+    app: crossplane-demo
+spec:
+  selector:
+    matchLabels:
+      app: crossplane-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: crossplane-demo
+    spec:
+      containers:
+      - name: echoserver
+        image: {{ .Values.image | quote }}
+        imagePullPolicy: Always
+        env:
+          - name: REDIS_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: cloudmemorystore-connection-details
+                key: endpoint
+          - name: REDIS_PORT
+            valueFrom:
+              secretKeyRef:
+                name: cloudmemorystore-connection-details
+                key: port
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "101Mi"
+          limits:
+            cpu: "100m"
+            memory: "120Mi"
+        ports:
+          - containerPort: 8080
+
+        # Probes
+        livenessProbe:
+          httpGet:
+            path: /live
+            port: 8080
+          initialDelaySeconds: 2
+          periodSeconds: 600
+          timeoutSeconds: 5
+          failureThreshold: 5
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 5
+          failureThreshold: 2
+      terminationGracePeriodSeconds: 3
+---
