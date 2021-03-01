@@ -2,4 +2,6 @@
 
 set -e exit
 
-minikube -p sample-argocd-keycloak delete
+source ./env.sh
+
+minikube -p ${CLUSTER} delete
