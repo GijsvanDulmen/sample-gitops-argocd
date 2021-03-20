@@ -17,7 +17,7 @@ simpleApp:
   namespace: simple-app-feature
   production: "no"
   server: https://kubernetes.default.svc
-  values: values-feature.yaml
+  values: values-dev.yaml
   targetRevision: feature-abc
 # - name: simple-app-cluster-resourcs
 #   namespace: simple-app-crs
