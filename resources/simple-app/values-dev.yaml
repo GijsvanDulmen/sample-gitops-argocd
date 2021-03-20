@@ -1,4 +1,4 @@
-url: simple-app-dev.192.168.64.26.nip.io
+url: simple-app-feature-abc.192.168.64.26.nip.io
 createNamespace: "no"
 image: gijsvandulmen/echoserver:latest
-version: "3"
+version: "4"
