@@ -48,7 +48,7 @@ spec:
   source:
     path: resources/simple-app
     repoURL: https://github.com/GijsvanDulmen/sample-gitops-argocd
-    targetRevision: HEAD
+    targetRevision: {{ $app.targetRevision }}
     helm:
       valueFiles:
       - {{ $app.values }}

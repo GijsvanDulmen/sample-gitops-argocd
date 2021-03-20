@@ -5,17 +5,20 @@ simpleApp:
   server: https://kubernetes.default.svc
   createNamespace: "no"
   values: values-prd.yaml
+  targetRevision: HEAD
 - name: simple-app-dev
   namespace: simple-app-dev
   production: "no"
   server: https://kubernetes.default.svc
   createNamespace: "no"
   values: values-dev.yaml
+  targetRevision: HEAD
 - name: simple-app-feature
   namespace: simple-app-feature
   production: "no"
   server: https://kubernetes.default.svc
   values: values-feature.yaml
+  targetRevision: feature-abc
 # - name: simple-app-cluster-resourcs
 #   namespace: simple-app-crs
 #   production: "no"
