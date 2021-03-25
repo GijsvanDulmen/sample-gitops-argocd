@@ -10,5 +10,3 @@ helm install crossplane --namespace crossplane-system crossplane-stable/crosspla
 kubectl apply -f ./crossplane/provider.yaml
 
 kubectl wait --for=condition=healthy --timeout=30s -n crossplane-system provider/provider-gcp
-
-# 
