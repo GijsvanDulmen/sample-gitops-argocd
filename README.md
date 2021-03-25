@@ -1,3 +1,6 @@
-## ArgoCD GitOps
+# ArgoCD GitOps
 
-Add more text later and more and more
+A sample repository for a training about ArgoCD, Crossplane and GitOps practices.
+
+## Usage
+Check out the cluster directory for starting.
