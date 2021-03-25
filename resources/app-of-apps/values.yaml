@@ -13,12 +13,12 @@ simpleApp:
   createNamespace: "no"
   values: values-dev.yaml
   targetRevision: HEAD
-# - name: simple-app-feature
-#   namespace: simple-app-feature
-#   production: "no"
-#   server: https://kubernetes.default.svc
-#   values: values-dev.yaml
-#   targetRevision: feature-abc
+- name: simple-app-feature
+  namespace: simple-app-feature
+  production: "no"
+  server: https://kubernetes.default.svc
+  values: values-dev.yaml
+  targetRevision: feature-abc
 # - name: simple-app-cluster-resourcs
 #   namespace: simple-app-crs
 #   production: "no"
